@@ -81,7 +81,9 @@ public class Quiz implements ActionListener{
 								/*67*/ "A company has on-premises servers running a relational database. The current database serves high read traffic for users in different locations. The company wants to migrate to AWS with the least amount of effort. The database solution should support disaster recovery and not affect the company's current traffic flow. Which solution meets these requirements?",
 								/*68*/ "A company's application is running on Amazon EC2 instances within an Auto Scaling group behind an Elastic Load Balancer. Based on the application's history the company anticipates a spike in traffic during a holiday each year. A solutions architect must design a strategy to ensure that the Auto Scaling group proactively increases capacity to minimize any performance impact on application users. Which solution will meet these requirements?",
 								/*69*/ "A company hosts an application on multiple Amazon EC2 instances. The application processes messages from an Amazon SQS queue, writes for an Amazon RDS table, and deletes - the message from the queue. Occasional duplicate records are found in the RDS table. The SQS queue does not contain any duplicate messages. What should a solutions architect do to ensure messages are being processed once only?",
-								/*70*/
+								/*70*/ /*"An Amazon EC2 administrator created the following policy associated with an IAM group containing several users:\n"
+										+ "What is the effect of this policy?\n"
+										+ "{ \"Version\": \"2012-10-17",*/
 								/*71*/ "A solutions architect is optimizing a website for an upcoming musical event. Videos of the performances will be streamed in real time and then will be available on demand. The event is expected to attract a global online audience. Which service will improve the performance of both the real-time and on-demand steaming?"
 						  };
 	
@@ -95,9 +97,9 @@ public class Quiz implements ActionListener{
 									   "Launch the EC2 instances in a spread placement group in one Availability Zone",
 									   "Launch the EC2 instances in an Auto Scaling group in two Regions and peer the VPCs",
 									   "Launch the EC2 instances in an Auto Scaling group spanning multiple Availability Zones"},
-								/*3*/ {"Use Amazon S3 with Transfer Acceleration to host the application.",
-									   "Use Amazon S3 with CacheControl headers to host the application.",
-									   "Use Amazon EC2 with Auto Scaling and Amazon CloudFront to host the application.",
+								/*3*/ {"Use Amazon S3 with Transfer Acceleration to host the application",
+									   "Use Amazon S3 with CacheControl headers to host the application",
+									   "Use Amazon EC2 with Auto Scaling and Amazon CloudFront to host the application",
 									   "Use Amazon EC2 with Auto Scaling and Amazon ElastiCache to host the application"},
 								/*4*/ {"Amazon EFS",
 									   "Amazon FSx", 
@@ -111,25 +113,25 @@ public class Quiz implements ActionListener{
 									   "AWS Lambda, Amazon Kinesis Data Firehose",
 									   "Amazon Kinesis Data Streams",
 									   "Amazon Kinesis Data Analytics"},
-								/*7*/ {"Configure an Amazon CloudFront distribution in front of the ALB.",
-									   "Configure an EC2 Auto Scaling simple scaling policy based on CPU utilization.",
-									   "Configure an EC2 Auto Scaling scheduled scaling policy based on the monthly schedule.",
-									   "Configure Amazon ElastiCache to remove some of the workload from the EC2 instances."}, 
+								/*7*/ {"Configure an Amazon CloudFront distribution in front of the ALB",
+									   "Configure an EC2 Auto Scaling simple scaling policy based on CPU utilization",
+									   "Configure an EC2 Auto Scaling scheduled scaling policy based on the monthly schedule",
+									   "Configure Amazon ElastiCache to remove some of the workload from the EC2 instances"}, 
 								/*8*/ {"Add an Amazon CloudFront distribution in front of the Application Load Balancer",
 									   "Add AWS Global Accelerator",
 									   "A nad B answers",
 									   "Add AWS Direct Connect"},
-								/*9*/ {"Enable read-through caching on the Amazon Aurora database.",
-									   "Update the application to read from the Multi-AZ standby instance.",
-									   "Create a read replica and modify the application to use the appropriate endpoint.",
+								/*9*/ {"Enable read-through caching on the Amazon Aurora database",
+									   "Update the application to read from the Multi-AZ standby instance",
+									   "Create a read replica and modify the application to use the appropriate endpoint",
 									   "B and C answers"}, 
-								/*10*/ {"AWS Direct Connect for both the initial transfer and ongoing connectivity.",
-									    "AWS Site-to-Site VPN for both the initial transfer and ongoing connectivity.",
-									    "AWS Snowball for the initial transfer and AWS Direct Connect for ongoing connectivity.",
-									    "AWS Snowball for the initial transfer and AWS Site-to-Site VPN for ongoing connectivity."},
-								/*11*/ {"Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances.",
-									    "Store the data in an Amazon EFS file system. Mount the file system on the application instances.",
-									    "Store the data in Amazon S3 Glacier. Update the vault policy to allow access to the application instances.",
+								/*10*/ {"AWS Direct Connect for both the initial transfer and ongoing connectivity",
+									    "AWS Site-to-Site VPN for both the initial transfer and ongoing connectivity",
+									    "AWS Snowball for the initial transfer and AWS Direct Connect for ongoing connectivity",
+									    "AWS Snowball for the initial transfer and AWS Site-to-Site VPN for ongoing connectivity"},
+								/*11*/ {"Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances",
+									    "Store the data in an Amazon EFS file system. Mount the file system on the application instances",
+									    "Store the data in Amazon S3 Glacier. Update the vault policy to allow access to the application instances",
 									    "Store the data in Amazon S3 Standard-Infrequent Access (S3 Standard-IA). Update the bucket policy to allow access to the application instances."},
 								//**Muzaffar aka-options**//	    
 								/*12*/ {"Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances",
@@ -466,7 +468,7 @@ public class Quiz implements ActionListener{
 	JFrame frame = new JFrame();
 	JTextField textfield = new JTextField();
 	JTextArea textarea = new JTextArea();
-	JScrollPane scrollableTextArea = new JScrollPane(textarea);
+	JScrollPane scrollPane = new JScrollPane(textarea);
 	JButton buttonA = new JButton();
 	JButton buttonB = new JButton();
 	JButton buttonC = new JButton();
@@ -505,6 +507,7 @@ public class Quiz implements ActionListener{
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setBackground(new Color(50,50,50));
 		frame.setLayout(null);
+		//frame.setLayout(new FlowLayout());
 		frame.setResizable(false);
 		
 		/* Frame display number of question */
@@ -526,8 +529,9 @@ public class Quiz implements ActionListener{
 		textarea.setVisible(true);
 		
 		/* Set up ScrollPane */
-		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setBounds(0,25,1260,150);
+		scrollPane.setBackground(new Color(50,50,50));
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
 		/* Button display A */
 		buttonA.setBounds(0,180,50,100);
@@ -648,9 +652,8 @@ public class Quiz implements ActionListener{
 		frame.add(buttonB);
 		frame.add(buttonC);
 		frame.add(buttonD);
-		frame.add(textarea, BorderLayout.CENTER);
+		frame.add(scrollPane);
 		frame.add(textfield);
-		frame.getContentPane().add(scrollableTextArea);
 		frame.setVisible(true);
 		
 		nextQuestion();
